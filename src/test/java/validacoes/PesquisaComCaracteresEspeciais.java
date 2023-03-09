@@ -1,4 +1,4 @@
-package validacoes;
+ package validacoes;
 
 
 import static org.hamcrest.CoreMatchers.is;
@@ -16,7 +16,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 
-public class PesquisaComResultado {
+public class PesquisaComCaracteresEspeciais {
 	public WebDriver driver;
 	 
 	@Before
@@ -39,12 +39,12 @@ public class PesquisaComResultado {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
 		driver.findElement(By.id("search-open")).click();
-		driver.findElement(By.name("s")).sendKeys("Agibank amplia atuação nacional e deve inaugurar 20 novas lojas ainda neste ano");
+		driver.findElement(By.name("s")).sendKeys("'");
 		driver.findElement(By.cssSelector(".desktop-search .search-submit")).click();
 		  
-		WebElement element = driver.findElement(By.xpath("//p[contains(text(),'Instituição já opera em todas as cidades do Brasil')]"));
+		WebElement element = driver.findElement(By.cssSelector("body.search.search-results.custom-background.wp-custom-logo.wp-embed-responsive.customizer-styles-applied.has-thumb.custom-logo-on.slider-on.offcanvas-widgets-off.highlander-enabled.highlander-light.imgfade-on:nth-child(2) div.content-wrap:nth-child(3) div.blog-wrap.cf div.site-content.cf header.archive-header:nth-child(1) h1.archive-title > span:nth-child(1)"));
 		 	Assert.assertThat(element.getText(),
-				is("Instituição já opera em todas as cidades do Brasil com mais de 100 mil habitantes, e vai abrir 20 unidades em cidades menores nos próximos meses."));
+				is("'"));
 
 		 	 	 	
 	 }

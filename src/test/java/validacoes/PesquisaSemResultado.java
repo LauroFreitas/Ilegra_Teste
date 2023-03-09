@@ -15,8 +15,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-
-public class PesquisaComResultado {
+public class PesquisaSemResultado {
 	public WebDriver driver;
 	 
 	@Before
@@ -39,15 +38,13 @@ public class PesquisaComResultado {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
 		driver.findElement(By.id("search-open")).click();
-		driver.findElement(By.name("s")).sendKeys("Agibank amplia atuação nacional e deve inaugurar 20 novas lojas ainda neste ano");
+		driver.findElement(By.name("s")).sendKeys("EEEEEEE");
 		driver.findElement(By.cssSelector(".desktop-search .search-submit")).click();
 		  
-		WebElement element = driver.findElement(By.xpath("//p[contains(text(),'Instituição já opera em todas as cidades do Brasil')]"));
-		 	Assert.assertThat(element.getText(),
-				is("Instituição já opera em todas as cidades do Brasil com mais de 100 mil habitantes, e vai abrir 20 unidades em cidades menores nos próximos meses."));
+		WebElement element = driver.findElement(By.cssSelector("body.search.search-no-results.custom-background.wp-custom-logo.wp-embed-responsive.customizer-styles-applied.no-thumb.custom-logo-on.slider-on.offcanvas-widgets-off.highlander-enabled.highlander-light.imgfade-on.contact-form-styles-loaded:nth-child(2) div.content-wrap:nth-child(3) div.blog-wrap.cf div.site-content.cf section.no-results.not-found div.entry-content > p:nth-child(1)"));
+	 	Assert.assertThat(element.getText(),
+			is("Não encontramos nada para estes termos de busca. Tente novamente com palavras-chave diferentes."));
 
-		 	 	 	
-	 }
-
-
+	}
+	
 }
